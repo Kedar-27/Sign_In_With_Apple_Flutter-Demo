@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>199592939134-noueguvvmg4gmtr80084iijlhmsangnt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.199592939134-noueguvvmg4gmtr80084iijlhmsangnt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAF4VlCWS8unma9Xv_qxpqiqLaypvtXPfs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>199592939134</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.signInWithAppleFlutterDemo</string>
+	<key>PROJECT_ID</key>
+	<string>applesignindemo-bba12</string>
+	<key>STORAGE_BUCKET</key>
+	<string>applesignindemo-bba12.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:199592939134:ios:a8e516a834d046945c922f</string>
+	<key>DATABASE_URL</key>
+	<string>https://applesignindemo-bba12.firebaseio.com</string>
+</dict>
+</plist>

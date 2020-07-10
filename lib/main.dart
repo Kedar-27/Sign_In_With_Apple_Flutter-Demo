@@ -2,6 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:apple_sign_in/apple_sign_in.dart';
+import 'package:provider/provider.dart';
+
+import './Firebase/apple_signIn_with_firebase.dart';
+import 'Firebase/apple_sign_in_available.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  //region Methods
   void appleLogIn() async {
     if (await AppleSignIn.isAvailable()) {
       final AuthorizationResult result = await AppleSignIn.performRequests([
@@ -66,20 +71,60 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> showAppleSignWithFirebasePage() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    final appleSignInAvailable = await AppleSignInAvailable.check();
+
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => Provider<AppleSignInAvailable>.value(
+        value: appleSignInAvailable,
+        child: AppleSignWithFirebaseDemo(),
+      ),
+    ));
+  }
+
+  //endregion
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign In With Apple Demo'),
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        color: Colors.amberAccent,
-        padding: EdgeInsets.all(9),
-        child: AppleSignInButton(
-          style: ButtonStyle.black,
-          type: ButtonType.continueButton,
-          onPressed: appleLogIn,
+    final safeAreaHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Sign In With Apple Demo'),
+        ),
+        body: Container(
+          color: Colors.amberAccent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                color: Colors.transparent,
+                height: safeAreaHeight * 0.9,
+                padding: EdgeInsets.all(9),
+                child: AppleSignInButton(
+                  style: ButtonStyle.black,
+                  type: ButtonType.continueButton,
+                  onPressed: appleLogIn,
+                ),
+              ),
+              Container(
+                  color: Colors.transparent,
+                  height: safeAreaHeight * 0.1,
+                  child: FlatButton(
+                      onPressed: showAppleSignWithFirebasePage,
+                      child: Text(
+                        'With Firebase',
+                        style: TextStyle(color: Colors.black),
+                      )))
+            ],
+          ),
         ),
       ),
     );
