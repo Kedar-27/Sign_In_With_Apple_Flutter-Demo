@@ -75,6 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
     WidgetsFlutterBinding.ensureInitialized();
     final appleSignInAvailable = await AppleSignInAvailable.check();
 
+//    Navigator.push(
+//      context,
+//      MaterialPageRoute(builder: (context) => AppleSignWithFirebaseDemo()),
+//    );
+//
+    
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => Provider<AppleSignInAvailable>.value(
         value: appleSignInAvailable,
